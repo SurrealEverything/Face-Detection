@@ -46,14 +46,14 @@ class parametri:
     # imagini din care trebuie sa selectati ferestre 36x36
     numeDirectorExempleNegative = numeDirectorSetDate + 'exempleNegative'
     # exemple test din dataset-ul CMU+MIT
-    numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CMU+MIT'
+    # numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CMU+MIT'
     # exemple test realizate la laborator si curs
-    # numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CursVA'
+    numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CursVA'
     # fisierul cu adnotari pentru exemplele test din dataset-ul CMU+MIT
     numeDirectorAdnotariTest = (
             numeDirectorSetDate
             + 'exempleTest/CMU+MIT_adnotari/ground_truth_bboxes.txt')
-    existaAdnotari = 1
+    existaAdnotari = 0
     numeDirectorSalveazaFisiere = numeDirectorSetDate + 'salveazaFisiere/'
     if not os.path.exists(numeDirectorSalveazaFisiere):
         os.makedirs(numeDirectorSalveazaFisiere)
