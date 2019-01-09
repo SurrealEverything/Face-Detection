@@ -61,11 +61,15 @@ def ruleazaDetectorFacial(parametri):
     # intervalul fiecarei imagini
     imageIntervals = np.empty((numarImagini,), dtype=object)
     count = 0
-
+    """
     scalingFactorPos = np.linspace(1, parametri.redimensionareMaxima,
                                    num=parametri.numarRedimensionari)
     scalingFactorNeg = np.flip(1 / scalingFactorPos, axis=0)
     scalingFactor = np.concatenate((scalingFactorNeg, scalingFactorPos[1:]))
+    """
+    scalingFactor = np.linspace(parametri.redimensionareMinima,
+                                parametri.redimensionareMaxima,
+                                num=parametri.numarRedimensionari)
 
     hog = cv2.HOGDescriptor(parametri.dimensiuneFereastra,
                             parametri.dimensiuneBloc,
@@ -82,7 +86,8 @@ def ruleazaDetectorFacial(parametri):
 
         img = cv2.imread(str(imgFiles[fileIdx]), 0)
 
-        for resIdx in range(parametri.numarRedimensionari*2-1):
+        # for resIdx in range(parametri.numarRedimensionari*2-1):
+        for resIdx in range(parametri.numarRedimensionari):
 
             iH, iW = img.shape
 

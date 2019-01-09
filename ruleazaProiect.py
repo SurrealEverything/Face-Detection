@@ -33,6 +33,8 @@ from ruleazaDetectorFacial import ruleazaDetectorFacial
 from evalueazaDetectii import evalueazaDetectii
 from vizualizeazaDetectiiInImagineFaraAdnotari \
     import vizualizeazaDetectiiInImagineFaraAdnotari
+from vizualizeazaDetectiiInImagineCuAdnotari \
+    import vizualizeazaDetectiiInImagineCuAdnotari
 
 
 # Pasul 0 - initializam parametri
@@ -46,14 +48,14 @@ class parametri:
     # imagini din care trebuie sa selectati ferestre 36x36
     numeDirectorExempleNegative = numeDirectorSetDate + 'exempleNegative'
     # exemple test din dataset-ul CMU+MIT
-    # numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CMU+MIT'
+    numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CMU+MIT'
     # exemple test realizate la laborator si curs
-    numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CursVA'
+    # numeDirectorExempleTest = numeDirectorSetDate + 'exempleTest/CursVA'
     # fisierul cu adnotari pentru exemplele test din dataset-ul CMU+MIT
     numeDirectorAdnotariTest = (
             numeDirectorSetDate
             + 'exempleTest/CMU+MIT_adnotari/ground_truth_bboxes.txt')
-    existaAdnotari = 0
+    existaAdnotari = 1
     numeDirectorSalveazaFisiere = numeDirectorSetDate + 'salveazaFisiere/'
     if not os.path.exists(numeDirectorSalveazaFisiere):
         os.makedirs(numeDirectorSalveazaFisiere)
@@ -79,7 +81,7 @@ class parametri:
     # numarul exemplelor negative
     numarExempleNegative = 10000
     # toate ferestrele cu scorul > threshold si maxime locale devin detectii
-    threshold = 0.1
+    threshold = 0.5
     # vizualizeaza template HOG
     # vizualizareTemplateHOG = 0
     # kernel folosit:
@@ -93,11 +95,13 @@ class parametri:
     # nr de mariri/micsorari ale imaginilor
     # pe care este rulat detectorul facial
     # 1 = no scaling
-    numarRedimensionari = 1
+    numarRedimensionari = 2
+    # factorul de redimensionare minima
+    redimensionareMinima = 0.7
     # factorul de redimensionare maxim
     redimensionareMaxima = 1
-    # pasul uc care glisam fereastra
-    pasGlisare = 1
+    # pasul cu care glisam fereastra
+    pasGlisare = 3
 
 
 # Pasul 1. Incarcam exemplele pozitive (cropate) si exemple negative generate
@@ -199,12 +203,12 @@ if parametri.existaAdnotari:
     gt_ids, gt_detectii, gt_existaDetectie, tp, fp, detectii_duplicat = \
         evalueazaDetectii(detectii, scoruriDetectii, imageIdx,
                           parametri.numeDirectorAdnotariTest)
-    """
+
     vizualizeazaDetectiiInImagineCuAdnotari(
             detectii, scoruriDetectii, imageIdx, tp, fp,
             parametri.numeDirectorExempleTest,
             parametri.numeDirectorAdnotariTest)
-    """
+
 
 else:
     vizualizeazaDetectiiInImagineFaraAdnotari(
