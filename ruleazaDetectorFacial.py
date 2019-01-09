@@ -121,6 +121,12 @@ def ruleazaDetectorFacial(parametri):
                 scor = np.sum(parametri.w * desc) + parametri.b
 
                 if scor > parametri.threshold:
+
+                    x_min = round(x_min/sF)
+                    x_max = round(x_max/sF)
+                    y_min = round(y_min/sF)
+                    y_max = round(y_max/sF)
+
                     detectii.append((x_min, y_min, x_max, y_max))
                     scoruriDetectii.append(scor)
                     imageIdx.append(numeImg)

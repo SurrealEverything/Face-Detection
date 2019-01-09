@@ -81,7 +81,7 @@ class parametri:
     # numarul exemplelor negative
     numarExempleNegative = 10000
     # toate ferestrele cu scorul > threshold si maxime locale devin detectii
-    threshold = 0.1
+    threshold = 0
     # vizualizeaza template HOG
     # vizualizareTemplateHOG = 0
     # kernel folosit:
@@ -101,7 +101,7 @@ class parametri:
     # factorul de redimensionare maxim
     redimensionareMaxima = 1
     # pasul cu care glisam fereastra
-    pasGlisare = 2
+    pasGlisare = 3
 
 
 # Pasul 1. Incarcam exemplele pozitive (cropate) si exemple negative generate
