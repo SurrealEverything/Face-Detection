@@ -30,14 +30,14 @@ def vizualizeazaDetectiiInImagineFaraAdnotari(
     for i in range(num_test_images):
 
         numeImg = os.path.basename(os.path.normpath(test_files[i]))
-        cur_test_image = cv2.imread(str(test_files[i]), 0)
+        cur_test_image = cv2.imread(str(test_files[i]), 1)
         cur_detections = numeImg == imageIdx
         cur_detectii = detectii[cur_detections, :]
-        cur_scoruriDetectii = scoruriDetectii[cur_detections]
+        # cur_scoruriDetectii = scoruriDetectii[cur_detections]
 
         fig, ax = plt.subplots()
         # imshow(cur_test_image);
-        plt.imshow(cur_test_image, cmap='gray')
+        plt.imshow(cur_test_image)  # , cmap='gray')
 
         num_detections = sum(cur_detections)
 
